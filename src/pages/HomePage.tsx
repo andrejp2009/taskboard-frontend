@@ -1,5 +1,5 @@
 import React from 'react';
-import ProtectedPage from '../components/Auth/ProtectedPage';
+import ProtectedPage from './ProtectedPage';
 
 const HomePage: React.FC = () => {
     return (

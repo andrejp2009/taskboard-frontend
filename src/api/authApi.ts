@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/user'; // Замените на URL вашего API
+const API_URL = 'http://localhost:5062/api/user'; // Замените на URL вашего API
 
 interface RegisterData {
     email: string;

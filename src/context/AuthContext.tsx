@@ -1,8 +1,9 @@
-import React, { createContext, useState, ReactNode } from 'react';
+// src/context/AuthContext.tsx
+import React, { createContext, useState, ReactNode, useEffect } from 'react';
 
 interface AuthContextType {
-    auth: any;
-    setAuth: (auth: any) => void;
+    auth: boolean;
+    setAuth: (auth: boolean) => void;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -12,7 +13,12 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-    const [auth, setAuth] = useState(null);
+    const [auth, setAuth] = useState<boolean>(() => !!localStorage.getItem('token'));
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setAuth(!!token);
+    }, []);
 
     return (
         <AuthContext.Provider value={{ auth, setAuth }}>
